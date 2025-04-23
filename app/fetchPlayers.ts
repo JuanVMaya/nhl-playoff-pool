@@ -94,10 +94,6 @@ export async function fetchPlayers() {
         })
       );
 
-    console.log(skaters);
-    console.log(goalies);
-    console.log("This is data:", skatersData);
-
     return { skaters, goalies, error, pointsSum };
   } catch (err: unknown) {
     if (err instanceof Error) {
