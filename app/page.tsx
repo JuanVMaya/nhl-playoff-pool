@@ -1,4 +1,4 @@
-import { fetchPlayers } from "./fetchPlayers";
+import { fetchPlayers, GoaliesType, SkatersType } from "./fetchPlayers";
 
 export default async function Home() {
   const fetchResult = await fetchPlayers();
@@ -47,59 +47,61 @@ export default async function Home() {
           </thead>
           <tbody>
             {skaters &&
-              // @ts-ignore Ignore TypeScript error
-              skaters.map(({ goals, assists, firstName, lastName }: any) => (
-                <tr key={`${firstName} ${lastName}`}>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center font-bold">
-                      {firstName} {lastName}
-                    </p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">
-                      {goals}
-                    </p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">
-                      {assists}
-                    </p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">-</p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">-</p>
-                  </td>
-                </tr>
-              ))}
+              skaters.map(
+                ({ goals, assists, firstName, lastName }: SkatersType) => (
+                  <tr key={`${firstName} ${lastName}`}>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center font-bold">
+                        {firstName} {lastName}
+                      </p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">
+                        {goals}
+                      </p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">
+                        {assists}
+                      </p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">-</p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">-</p>
+                    </td>
+                  </tr>
+                )
+              )}
             {goalies &&
-              // @ts-ignore Ignore TypeScript error
-              goalies.map(({ firstName, lastName, shutouts, wins }: any) => (
-                <tr key={`${firstName} ${lastName}`}>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center font-bold">
-                      {firstName} {lastName}
-                    </p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">-</p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">-</p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">
-                      {shutouts}
-                    </p>
-                  </td>
-                  <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">
-                      {wins}
-                    </p>
-                  </td>
-                </tr>
-              ))}
+              goalies.map(
+                ({ firstName, lastName, shutouts, wins }: GoaliesType) => (
+                  <tr key={`${firstName} ${lastName}`}>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center font-bold">
+                        {firstName} {lastName}
+                      </p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">-</p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">-</p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">
+                        {shutouts}
+                      </p>
+                    </td>
+                    <td className="justify-center p-2 border border-gray-300">
+                      <p className="text-md tracking-[-.01em] text-center">
+                        {wins}
+                      </p>
+                    </td>
+                  </tr>
+                )
+              )}
           </tbody>
         </table>
       </main>

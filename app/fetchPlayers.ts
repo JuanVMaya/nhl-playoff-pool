@@ -1,29 +1,25 @@
 import { players, teams } from "./constants";
 import axios from "axios";
 
-export type SkatersType =
-  | {
-      goals: number;
-      assists: number;
-      firstName: string;
-      lastName: string;
-    }[]
-  | null;
+export type SkatersType = {
+  goals: number;
+  assists: number;
+  firstName: string;
+  lastName: string;
+};
 
-export type GoaliesType =
-  | {
-      shutouts: number;
-      wins: number;
-      firstName: string;
-      lastName: string;
-    }[]
-  | null;
+export type GoaliesType = {
+  shutouts: number;
+  wins: number;
+  firstName: string;
+  lastName: string;
+};
 export type ErrorMessage = string | null;
 type PointsSumType = number;
 
 export async function fetchPlayers() {
-  let skaters: SkatersType = null;
-  let goalies: GoaliesType = null;
+  let skaters: SkatersType[] | null = null;
+  let goalies: GoaliesType[] | null = null;
   let error: ErrorMessage = null;
   const pointsSum: PointsSumType = 0; // Todo
 
