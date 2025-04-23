@@ -1,10 +1,31 @@
 import { players, teams } from "./constants";
 import axios from "axios";
 
+export type SkatersType =
+  | {
+      goals: number;
+      assists: number;
+      firstName: string;
+      lastName: string;
+    }[]
+  | null;
+
+export type GoaliesType =
+  | {
+      shutouts: number;
+      wins: number;
+      firstName: string;
+      lastName: string;
+    }[]
+  | null;
+export type ErrorMessage = string | null;
+type PointsSumType = number;
+
 export async function useFetchPlayers() {
-  let skaters = null;
-  let goalies = null;
-  let error = null;
+  let skaters: SkatersType = null;
+  let goalies: GoaliesType = null;
+  let error: ErrorMessage = null;
+  const pointsSum: PointsSumType = 0; // Todo
 
   try {
     const response = await Promise.all(
@@ -80,8 +101,6 @@ export async function useFetchPlayers() {
     console.log(skaters);
     console.log(goalies);
     console.log("This is data:", skatersData);
-
-    const pointsSum = 0; // Todo
 
     return { skaters, goalies, error, pointsSum };
   } catch (err: unknown) {

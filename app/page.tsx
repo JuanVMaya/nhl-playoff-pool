@@ -1,14 +1,44 @@
-import { useFetchPlayers } from "./fetchPlayers";
+// import { useFetchPlayers } from "./fetchPlayers";
 
-export default async function Home() {
-  const fetchResult = await useFetchPlayers();
-  const { skaters, goalies, error } = fetchResult || {
+// export default async function Home() {
+//   const fetchResult = await useFetchPlayers();
+//   const { skaters, goalies, error } = fetchResult || {
+//     skaters: null,
+//     goalies: null,
+//     error: null,
+//   };
+
+import { useEffect, useState } from "react";
+import {
+  ErrorMessage,
+  GoaliesType,
+  SkatersType,
+  useFetchPlayers,
+} from "./fetchPlayers";
+
+export default function Home() {
+  const [fetchResult, setFetchResult] = useState<{
+    skaters: SkatersType;
+    goalies: GoaliesType;
+    error: ErrorMessage;
+  }>({
     skaters: null,
     goalies: null,
     error: null,
-  };
+  });
 
-  if (error) {
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await useFetchPlayers();
+      setFetchResult(result || { skaters: null, goalies: null, error: null });
+    };
+
+    fetchData();
+  }, []);
+
+  const { skaters, goalies, error } = fetchResult;
+
+  if (error || !skaters || !goalies) {
     return <h1>There was an error processing the request</h1>;
   }
 
