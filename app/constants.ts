@@ -13,9 +13,8 @@ export const players: string[] = [
   "Morgan Rielly",
   "Thomas Chabot",
   "Brent Burns",
-  "Andrei Vasilevskiy",
-  "Sergei Bobrovsky",
-  "Linus Ullmark",
+  "Andrei Vasilevskiy", // Goalie
+  "Sergei Bobrovsky", // Goalie
 ];
 
 export const teams: string[] = ["OTT", "WSH", "TOR", "TBL", "FLA", "CAR"];

@@ -33,13 +33,23 @@ export default async function Home() {
                 Assists
               </h2>
             </th>
+            <th className="justify-center p-2 border border-gray-300">
+              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                Shutouts
+              </h2>
+            </th>
+            <th className="justify-center p-2 border border-gray-300">
+              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                Wins
+              </h2>
+            </th>
           </thead>
           <tbody>
             {skaters &&
               skaters.map(({ goals, assists, firstName, lastName }: any) => (
                 <tr key={`${firstName} ${lastName}`}>
                   <td className="justify-center p-2 border border-gray-300">
-                    <p className="text-md tracking-[-.01em] text-center">
+                    <p className="text-md tracking-[-.01em] text-center font-bold">
                       {firstName} {lastName}
                     </p>
                   </td>
@@ -51,6 +61,38 @@ export default async function Home() {
                   <td className="justify-center p-2 border border-gray-300">
                     <p className="text-md tracking-[-.01em] text-center">
                       {assists}
+                    </p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">-</p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">-</p>
+                  </td>
+                </tr>
+              ))}
+            {goalies &&
+              goalies.map(({ firstName, lastName, shutouts, wins }: any) => (
+                <tr key={`${firstName} ${lastName}`}>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center font-bold">
+                      {firstName} {lastName}
+                    </p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">-</p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">-</p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">
+                      {shutouts}
+                    </p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">
+                      {wins}
                     </p>
                   </td>
                 </tr>
