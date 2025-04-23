@@ -17,41 +17,45 @@ export default async function Home() {
           NHL Playoffs Pool
         </h1>
         <table className="w-full text-sm/6 sm:text-left">
-          <th className="justify-center p-2 border border-gray-300">
-            <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-              Name
-            </h2>
-          </th>
-          <th className="justify-center p-2 border border-gray-300">
-            <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-              Goals
-            </h2>
-          </th>
-          <th className="justify-center p-2 border border-gray-300">
-            <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-              Assists
-            </h2>
-          </th>
-          {skaters &&
-            skaters.map(({ goals, assists, firstName, lastName }: any) => (
-              <tr key={`${firstName} ${lastName}`}>
-                <td className="justify-center p-2 border border-gray-300">
-                  <p className="text-md tracking-[-.01em] text-center">
-                    {firstName} {lastName}
-                  </p>
-                </td>
-                <td className="justify-center p-2 border border-gray-300">
-                  <p className="text-md tracking-[-.01em] text-center">
-                    {goals}
-                  </p>
-                </td>
-                <td className="justify-center p-2 border border-gray-300">
-                  <p className="text-md tracking-[-.01em] text-center">
-                    {assists}
-                  </p>
-                </td>
-              </tr>
-            ))}
+          <thead>
+            <th className="justify-center p-2 border border-gray-300">
+              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                Name
+              </h2>
+            </th>
+            <th className="justify-center p-2 border border-gray-300">
+              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                Goals
+              </h2>
+            </th>
+            <th className="justify-center p-2 border border-gray-300">
+              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                Assists
+              </h2>
+            </th>
+          </thead>
+          <tbody>
+            {skaters &&
+              skaters.map(({ goals, assists, firstName, lastName }: any) => (
+                <tr key={`${firstName} ${lastName}`}>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">
+                      {firstName} {lastName}
+                    </p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">
+                      {goals}
+                    </p>
+                  </td>
+                  <td className="justify-center p-2 border border-gray-300">
+                    <p className="text-md tracking-[-.01em] text-center">
+                      {assists}
+                    </p>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
         </table>
       </main>
     </div>
