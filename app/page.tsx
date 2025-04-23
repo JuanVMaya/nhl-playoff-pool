@@ -4,30 +4,13 @@ import {
   ErrorMessage,
   GoaliesType,
   SkatersType,
-  useFetchPlayers,
+  fetchPlayers,
 } from "./fetchPlayers";
 
-export default function Home() {
-  const [fetchResult, setFetchResult] = useState<{
-    skaters: SkatersType;
-    goalies: GoaliesType;
-    error: ErrorMessage;
-  }>({
-    skaters: null,
-    goalies: null,
-    error: null,
-  });
+export default async function Home() {
+  const fetchResult = await fetchPlayers();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await useFetchPlayers();
-      setFetchResult(result || { skaters: null, goalies: null, error: null });
-    };
-
-    fetchData();
-  }, []);
-
-  const { skaters, goalies, error } = fetchResult;
+  const { skaters, goalies, error } = fetchResult || {};
 
   if (error || !skaters || !goalies) {
     return <h1>There was an error processing the request</h1>;
@@ -69,6 +52,7 @@ export default function Home() {
           </thead>
           <tbody>
             {skaters &&
+              // @ts-ignore Ignore TypeScript error
               skaters.map(({ goals, assists, firstName, lastName }: any) => (
                 <tr key={`${firstName} ${lastName}`}>
                   <td className="justify-center p-2 border border-gray-300">
@@ -95,6 +79,7 @@ export default function Home() {
                 </tr>
               ))}
             {goalies &&
+              // @ts-ignore Ignore TypeScript error
               goalies.map(({ firstName, lastName, shutouts, wins }: any) => (
                 <tr key={`${firstName} ${lastName}`}>
                   <td className="justify-center p-2 border border-gray-300">

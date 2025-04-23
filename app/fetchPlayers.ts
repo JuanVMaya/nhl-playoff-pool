@@ -21,7 +21,7 @@ export type GoaliesType =
 export type ErrorMessage = string | null;
 type PointsSumType = number;
 
-export async function useFetchPlayers() {
+export async function fetchPlayers() {
   let skaters: SkatersType = null;
   let goalies: GoaliesType = null;
   let error: ErrorMessage = null;
@@ -33,7 +33,9 @@ export async function useFetchPlayers() {
         axios.get(`https://api-web.nhle.com/v1/club-stats/${team}/20242025/3`)
       )
     );
+    // @ts-ignore Ignore TypeScript error
     const skatersData: any = [];
+    // @ts-ignore Ignore TypeScript error
     const goaliesData: any = [];
     response.forEach(({ data }) => {
       skatersData.push(...data.skaters);
