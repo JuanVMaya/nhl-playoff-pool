@@ -1,13 +1,4 @@
-// import { useFetchPlayers } from "./fetchPlayers";
-
-// export default async function Home() {
-//   const fetchResult = await useFetchPlayers();
-//   const { skaters, goalies, error } = fetchResult || {
-//     skaters: null,
-//     goalies: null,
-//     error: null,
-//   };
-
+"use client";
 import { useEffect, useState } from "react";
 import {
   ErrorMessage,
