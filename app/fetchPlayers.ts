@@ -108,6 +108,7 @@ export async function fetchPlayers() {
   } catch (err: unknown) {
     if (err instanceof Error) {
       error = err.message;
+      return { skaters, goalies, error, pointsSum };
     }
   }
 }

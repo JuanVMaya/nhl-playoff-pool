@@ -1,11 +1,4 @@
-"use client";
-import { useEffect, useState } from "react";
-import {
-  ErrorMessage,
-  GoaliesType,
-  SkatersType,
-  fetchPlayers,
-} from "./fetchPlayers";
+import { fetchPlayers } from "./fetchPlayers";
 
 export default async function Home() {
   const fetchResult = await fetchPlayers();
@@ -24,31 +17,33 @@ export default async function Home() {
         </h1>
         <table className="w-full text-sm/6 sm:text-left">
           <thead>
-            <th className="justify-center p-2 border border-gray-300">
-              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-                Name
-              </h2>
-            </th>
-            <th className="justify-center p-2 border border-gray-300">
-              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-                Goals
-              </h2>
-            </th>
-            <th className="justify-center p-2 border border-gray-300">
-              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-                Assists
-              </h2>
-            </th>
-            <th className="justify-center p-2 border border-gray-300">
-              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-                Shutouts
-              </h2>
-            </th>
-            <th className="justify-center p-2 border border-gray-300">
-              <h2 className="text-xl font-bold tracking-[-.01em] text-center">
-                Wins
-              </h2>
-            </th>
+            <tr>
+              <td className="justify-center p-2 border border-gray-300">
+                <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                  Name
+                </h2>
+              </td>
+              <td className="justify-center p-2 border border-gray-300">
+                <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                  Goals
+                </h2>
+              </td>
+              <td className="justify-center p-2 border border-gray-300">
+                <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                  Assists
+                </h2>
+              </td>
+              <td className="justify-center p-2 border border-gray-300">
+                <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                  Shutouts
+                </h2>
+              </td>
+              <td className="justify-center p-2 border border-gray-300">
+                <h2 className="text-xl font-bold tracking-[-.01em] text-center">
+                  Wins
+                </h2>
+              </td>
+            </tr>
           </thead>
           <tbody>
             {skaters &&
