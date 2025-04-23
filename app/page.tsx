@@ -1,5 +1,3 @@
-import axios from "axios";
-import { players } from "./constants";
 import { useFetchPlayers } from "./fetchPlayers";
 
 export default async function Home() {
