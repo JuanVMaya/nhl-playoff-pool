@@ -12,7 +12,7 @@ export const players: string[] = [
   "Seth Jones",
   "Morgan Rielly",
   "Thomas Chabot",
-  "Brent Burns",
+  "Jakob Chychrun",
   "Andrei Vasilevskiy", // Goalie
   "Sergei Bobrovsky", // Goalie
 ];
