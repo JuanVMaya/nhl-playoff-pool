@@ -14,6 +14,9 @@ export default async function Home() {
       <h1 className="text-2xl sm:text-3xl font-bold tracking-[-.01em] text-center">
         NHL Playoffs Pool - Juan
       </h1>
+      <p>
+        Points and table will automatically update after every playoff game.
+      </p>
       <h1 className="font-bold text-xl"> Total Points: {pointsSum}</h1>
       <table className="w-full text-sm/6 sm:text-left">
         <thead>
