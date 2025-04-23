@@ -3,17 +3,18 @@ import { fetchPlayers, GoaliesType, SkatersType } from "./fetchPlayers";
 export default async function Home() {
   const fetchResult = await fetchPlayers();
 
-  const { skaters, goalies, error } = fetchResult || {};
+  const { skaters, goalies, error, pointsSum } = fetchResult || {};
 
   if (error || !skaters || !goalies) {
     return <h1>There was an error processing the request</h1>;
   }
 
   return (
-    <main className="mx-auto flex flex-col gap-[32px] items-center sm:items-start mt-4">
+    <main className="mx-auto flex flex-col gap-[16px] items-center sm:items-start mt-4">
       <h1 className="text-2xl sm:text-3xl font-bold tracking-[-.01em] text-center">
         NHL Playoffs Pool - Juan
       </h1>
+      <h1 className="font-bold text-xl"> Total Points: {pointsSum}</h1>
       <table className="w-full text-sm/6 sm:text-left">
         <thead>
           <tr>

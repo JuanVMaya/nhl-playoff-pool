@@ -21,7 +21,7 @@ export async function fetchPlayers() {
   let skaters: SkatersType[] | null = null;
   let goalies: GoaliesType[] | null = null;
   let error: ErrorMessage = null;
-  const pointsSum: PointsSumType = 0; // Todo
+  let pointsSum: PointsSumType = 0;
 
   try {
     const response = await Promise.all(
@@ -93,6 +93,19 @@ export async function fetchPlayers() {
           lastName: lastName.default,
         })
       );
+
+    //  Points earned:
+    // Goal        - 1 pt
+    // Assist       - 1 pt
+    // Goalie win   - 1 pt
+    //       or
+    // Shutout     - 2 pts
+    skaters?.forEach(({ goals, assists }) => {
+      pointsSum += goals + assists;
+    });
+    goalies?.forEach(({ wins, shutouts }) => {
+      pointsSum += wins + shutouts * 2;
+    });
 
     return { skaters, goalies, error, pointsSum };
   } catch (err: unknown) {
