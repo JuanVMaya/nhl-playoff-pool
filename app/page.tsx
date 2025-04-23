@@ -2,11 +2,15 @@ import { useFetchPlayers } from "./fetchPlayers";
 
 export default async function Home() {
   const fetchResult = await useFetchPlayers();
-  const { skaters, goalies, error, pointsSum } = fetchResult || {
+  const { skaters, goalies, error } = fetchResult || {
     skaters: null,
     goalies: null,
     error: null,
   };
+
+  if (error) {
+    return <h1>There was an error processing the request</h1>;
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
