@@ -1,5 +1,4 @@
 import { players, teams } from "./constants";
-import axios from "axios";
 
 export type SkatersType = {
   goals: number;
