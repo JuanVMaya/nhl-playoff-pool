@@ -26,15 +26,18 @@ export async function fetchPlayers() {
   try {
     const response = await Promise.all(
       teams.map((team) =>
-        axios.get(`https://api-web.nhle.com/v1/club-stats/${team}/20242025/3`)
+        fetch(`https://api-web.nhle.com/v1/club-stats/${team}/20242025/3`, {
+          cache: "no-store",
+        })
       )
     );
     const skatersData: any = [];
     const goaliesData: any = [];
-    response.forEach(({ data }) => {
+    for (const res of response) {
+      const data = await res.json();
       skatersData.push(...data.skaters);
       goaliesData.push(...data.goalies);
-    });
+    }
 
     skaters = skatersData
       .filter(
@@ -100,6 +103,8 @@ export async function fetchPlayers() {
     // Goalie win   - 1 pt
     //       or
     // Shutout     - 2 pts
+
+    // Calculate points sum
     skaters?.forEach(({ goals, assists }) => {
       pointsSum += goals + assists;
     });
