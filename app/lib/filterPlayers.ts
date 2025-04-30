@@ -29,7 +29,6 @@ export const filterPlayers = ({
 }) => {
   let skaters: SkatersType[] | null = null;
   let goalies: GoaliesType[] | null = null;
-  let error: ErrorMessage = null;
   let pointsSum: PointsSumType = 0;
 
   skaters = skatersData

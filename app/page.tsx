@@ -1,7 +1,4 @@
-import Link from "next/link";
-import { ParticipantNameType, participantNames } from "./constants";
-
-export default async function Home() {
+export default function Home() {
   return (
     <main className="mx-auto flex flex-col gap-[16px] items-center sm:items-start mt-4">
       <h1 className="text-2xl sm:text-3xl font-bold tracking-[-.01em] text-center">
